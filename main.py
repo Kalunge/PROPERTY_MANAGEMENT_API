@@ -17,12 +17,14 @@ from Models.house import HouseModel
 from Models.tenant import TenantModel
 from Models.apartment import ApartmentModel
 from Models.landlord import LandlordModel
+from Models.user import UserModel
 
 
 @app.before_first_request
 def create_all():
     db.create_all()
 
+from Resources.register import *
 from Resources.landlord import *
 from Resources.apartment import *
 from Resources.house import *
