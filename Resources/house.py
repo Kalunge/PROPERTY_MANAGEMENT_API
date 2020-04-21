@@ -37,20 +37,27 @@ class HouseList(Resource):
                 tenant_id = house_list[index]['tenant_id']
                 tenant_name = TenantModel.fetch_by_id(tenant_id).full_name
                 tenant_dict = {'Tenant' :tenant_name}
+                house_dict_list = houses_schema.dump(houses)
+
+
+                for each_dict in house_dict_list:
+                    each_dict.update(tenant_dict)
 
                     #GET APARTMENT NAME AS BLOCK
                 apartment_id = house_list[index]['apartment_id']
                 apartment_name = ApartmentModel.fetch_by_id(apartment_id).title
                 apartment_dict = {'Block': apartment_name}
 
+                # index += 1
                 index += 1
-                tenant_id += 1
-                apartment_id += 1
+                # tenant_id += 1
+                # apartment_id += 1
 
-            house_dict_list = houses_schema.dump(houses)
-            for each_dict in house_dict_list:
-                each_dict.update(tenant_dict)
-                each_dict.update(apartment_dict) 
+            # house_dict_list = houses_schema.dump(houses)
+            
+            #     print(each_dict)
+            #     each_dict.update(apartment_dict) 
+
 
             return house_dict_list, 200
         else:

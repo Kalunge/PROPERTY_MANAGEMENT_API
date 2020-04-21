@@ -34,6 +34,7 @@ class ApartmentList(Resource):
                             apartment_list[index].update(house_dict)   
                             print(apartment_list)
                     index += 1
+        # return apartment_list, 200
 
             # houses = []
             #     for house in apartment.houses:
@@ -50,7 +51,7 @@ class ApartmentList(Resource):
             
             
 
-            # return apartment_list, 200
+            return apartment_list, 200
         else:
             return {'message':'That apartment does not exists'}, 404
 
